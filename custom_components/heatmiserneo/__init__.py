@@ -79,15 +79,15 @@ async def async_setup_entry(hass, entry):
     await coordinator.async_config_entry_first_refresh()
     
     hass.async_create_task(
-        hass.config_entries.async_forward_entry_setup(entry, "climate")
+        await hass.config_entries.async_forward_entry_setups(entry, "climate")
     )
 
     hass.async_create_task(
-        hass.config_entries.async_forward_entry_setup(entry, "switch")
+        await hass.config_entries.async_forward_entry_setups(entry, "switch")
     )
 
     hass.async_create_task(
-        hass.config_entries.async_forward_entry_setup(entry, "sensor")
+        await hass.config_entries.async_forward_entry_setups(entry, "sensor")
     )
 
     return True

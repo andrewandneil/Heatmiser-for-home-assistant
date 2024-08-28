@@ -16,9 +16,8 @@ from homeassistant.components.binary_sensor import (
     DEVICE_CLASS_PROBLEM,
 )
 
-from homeassistant.components.sensor import SensorEntity, DEVICE_CLASS_BATTERY
-
-from homeassistant.components.sensor import SensorEntity, DEVICE_CLASS_TEMPERATURE
+from homeassistant.components.sensor.SensorEntity.SensorDeviceClass import BATTERY, TEMPERATURE
+from homeassistant.components.sensor import SensorEntity
 
 from homeassistant.helpers.update_coordinator import (
     DataUpdateCoordinator,
@@ -65,7 +64,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
 
 class NeoStatBatterySensor(CoordinatorEntity, SensorEntity):
-    """Represents the battery status of the thermostaat"""
+    """Represents the battery status of the thermostat"""
 
     def __init__(self, neostat: NeoStat, coordinator: DataUpdateCoordinator):
         super().__init__(coordinator)
