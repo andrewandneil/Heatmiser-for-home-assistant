@@ -240,6 +240,11 @@ class NeoStatThermostatTempSensor(CoordinatorEntity, SensorEntity):
         return self._unit_of_measurement
 
     @property
+    def native_unit_of_measurement(self):
+        """Returns native unit of measurement"""
+        return "°C"
+
+    @property
     def native_value(self):
         """Returns the current temperature."""
         return float(self.data.temperature)

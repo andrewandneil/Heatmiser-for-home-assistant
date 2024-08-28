@@ -2,9 +2,9 @@
   "domain": "heatmiserneo",
   "name": "Heatmiser Neo Climate",
   "config_flow": true,
-  "documentation": "https://github.com/MindrustUK/Heatmiser-for-home-assistant",
+  "documentation": "https://github.com/andrewandneil/Heatmiser-for-home-assistant",
   "dependencies": [],
-  "codeowners": ["MindrustUK"],
+  "codeowners": ["andrewandneil"],
   "requirements": ["neohubapi==1.0"],
   "version": "0.2.4",
   "zeroconf": [
