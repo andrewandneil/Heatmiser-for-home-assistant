@@ -13,11 +13,15 @@ from abc import ABCMeta, abstractmethod
 
 from homeassistant.components.binary_sensor import (
     BinarySensorEntity,
-    DEVICE_CLASS_PROBLEM,
+    BinarySensorDeviceClass,
 )
 
-from homeassistant.components.sensor.SensorEntity.SensorDeviceClass import BATTERY, TEMPERATURE
-from homeassistant.components.sensor import SensorEntity
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntity,
+    SensorEntityDescription,
+    SensorStateClass,
+)
 
 from homeassistant.helpers.update_coordinator import (
     DataUpdateCoordinator,
@@ -107,7 +111,7 @@ class NeoStatBatterySensor(CoordinatorEntity, SensorEntity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_BATTERY
+        return SensorDeviceClass.BATTERY
 
     @property
     def icon(self):
@@ -173,7 +177,7 @@ class NeoStatOfflineBinarySensor(CoordinatorEntity, BinarySensorEntity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_PROBLEM
+        return BinarySensorDeviceClass.PROBLEM
 
     @property
     def icon(self):
@@ -250,7 +254,7 @@ class NeoStatThermostatTempSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_TEMPERATURE
+        return SensorDeviceClass.TEMPERATURE
 
     @property
     def icon(self):
