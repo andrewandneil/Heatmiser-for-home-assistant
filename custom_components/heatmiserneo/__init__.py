@@ -16,6 +16,7 @@ from neohubapi.neohub import NeoHub
 from .const import DOMAIN, HUB, COORDINATOR
 
 _LOGGER = logging.getLogger(__name__)
+PLATFORMS: list[str] = ["climate", "switch", "sensor"]
 
 async def async_setup(hass, config):
     """Set up Heamiser Neo components."""
@@ -78,17 +79,7 @@ async def async_setup_entry(hass, entry):
 
     await coordinator.async_config_entry_first_refresh()
     
-    hass.async_create_task(
-        await hass.config_entries.async_forward_entry_setups(entry, "climate")
-    )
-
-    hass.async_create_task(
-        await hass.config_entries.async_forward_entry_setups(entry, "switch")
-    )
-
-    hass.async_create_task(
-        await hass.config_entries.async_forward_entry_setups(entry, "sensor")
-    )
+    await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 
     return True
 
